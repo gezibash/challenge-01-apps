@@ -1,21 +1,30 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
   name: monitoring-apps
   namespace: argocd
 spec:
-  project: default
-  source:
-    repoURL: https://github.com/gezibash/challenge-01-apps.git
-    targetRevision: HEAD
-    path: apps/monitoring
-    recurse: true
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: monitoring
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+  generators:
+    - directory:
+        configMapRef: argocd-cm
+        requeueAfterSeconds: 30
+        directory:
+          path: apps/monitoring
+  template:
+    metadata:
+      name: "{{path.basename}}"
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/gezibash/challenge-01-apps.git
+        targetRevision: HEAD
+        path: apps/monitoring/{{path.basename}}
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: monitoring
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
