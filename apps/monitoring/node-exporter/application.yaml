@@ -12,7 +12,7 @@ spec:
     helm:
       releaseName: node-exporter
       valueFiles:
-        - ../../../helm-values/monitoring/node-exporter-values.yaml
+        - ../values/node-exporter-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring

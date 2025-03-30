@@ -12,8 +12,7 @@ spec:
     helm:
       releaseName: grafana
       valueFiles:
-        - ../../../helm-values/monitoring/grafana-values.yaml
-
+        - ../values/grafana-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
