@@ -9,7 +9,7 @@ spec:
         configMapRef: argocd-cm
         requeueAfterSeconds: 30
         directory:
-          path: apps/monitoring
+          path: monitoring
   template:
     metadata:
       name: "{{path.basename}}"
