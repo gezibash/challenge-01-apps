@@ -1,0 +1,43 @@
+server:
+  global:
+    scrape_interval: 15s
+  nodeSelector:
+    doks.digitalocean.com/node-pool: management-pool
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: doks.digitalocean.com/node-pool
+                operator: In
+                values:
+                  - management-pool
+  persistentVolume:
+    enabled: true
+    size: 10Gi
+alertmanager:
+  enabled: true
+  nodeSelector:
+    doks.digitalocean.com/node-pool: management-pool
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: doks.digitalocean.com/node-pool
+                operator: In
+                values:
+                  - management-pool
+pushgateway:
+  enabled: true
+  nodeSelector:
+    doks.digitalocean.com/node-pool: management-pool
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: doks.digitalocean.com/node-pool
+                operator: In
+                values:
+                  - management-pool

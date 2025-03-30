@@ -1,0 +1,16 @@
+service:
+  port: 9100
+  targetPort: 9100
+
+nodeSelector:
+  doks.digitalocean.com/node-pool: management-pool
+
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: doks.digitalocean.com/node-pool
+              operator: In
+              values:
+                - management-pool

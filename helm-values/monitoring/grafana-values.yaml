@@ -1,0 +1,30 @@
+service:
+  type: ClusterIP
+
+persistence:
+  type: pvc
+  enabled: true
+  size: 5Gi
+
+nodeSelector:
+  doks.digitalocean.com/node-pool: management-pool
+
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: doks.digitalocean.com/node-pool
+              operator: In
+              values:
+                - management-pool
+
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        url: http://prometheus-server.monitoring.svc.cluster.local
+        access: proxy
+        isDefault: true
