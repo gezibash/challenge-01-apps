@@ -34,7 +34,7 @@ apps/
 4. Apply the parent application to your ArgoCD instance:
 
 ```bash
-kubectl apply -f apps/monitoring-app.yaml
+  kubectl apply -f apps/monitoring-app.yaml
 ```
 
 ArgoCD will automatically create the monitoring namespace and deploy all the applications.
