@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/gezibash/challenge-01-apps.git
     targetRevision: HEAD
-    path: apps
+    path: apps/monitoring
     recurse: true
   destination:
     server: https://kubernetes.default.svc
