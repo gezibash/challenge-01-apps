@@ -6,10 +6,8 @@ metadata:
 spec:
   generators:
     - directory:
-        configMapRef: argocd-cm
+        path: monitoring
         requeueAfterSeconds: 30
-        directory:
-          path: monitoring
   template:
     metadata:
       name: "{{path.basename}}"
