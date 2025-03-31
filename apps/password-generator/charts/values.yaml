@@ -135,5 +135,5 @@ affinity:
               - key: app.kubernetes.io/name
                 operator: In
                 values:
-                  - { { .Chart.Name } }
+                  - "password-generator"
           topologyKey: kubernetes.io/hostname
