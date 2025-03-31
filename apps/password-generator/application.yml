@@ -8,12 +8,11 @@ spec:
   source:
     repoURL: https://github.com/gezibash/challenge-01-apps.git
     targetRevision: HEAD
-    path: apps/password-generator/charts
+    path: apps/password-generator
     helm:
+      releaseName: password-generator
       valueFiles:
         - values.yml
-      releaseName: password-generator
-      version: v0.1.0
   destination:
     server: https://kubernetes.default.svc
     namespace: apps
