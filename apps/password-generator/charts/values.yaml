@@ -14,7 +14,8 @@ image:
   tag: "57cba768a153cf3bdac196b89b8ebc4ef3abd176"
 
 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
-imagePullSecrets: []
+imagePullSecrets:
+  - name: github-registry-secret
 # This is to override the chart name.
 nameOverride: "password-generator"
 fullnameOverride: "password-generator"
