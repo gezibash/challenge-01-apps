@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/gezibash/challenge-01-apps.git
     targetRevision: HEAD
-    path: apps/password-generator
+    path: apps/password-generator/charts
     helm:
       releaseName: password-generator
       valueFiles:
