@@ -11,8 +11,6 @@ spec:
     path: apps/password-generator/charts
     helm:
       releaseName: password-generator
-      valueFiles:
-        - ../values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: apps
